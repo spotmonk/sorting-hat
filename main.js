@@ -7,13 +7,23 @@ const writeToDom = (selector, string)=>{
 }
 
 const displaySortForm = () => {
-  domString = `<input type="text" id="studentName" value="Neville Longbottom">
-  <button id="secondButton">Second Button</button>`
+  domString = `<div class="sortForm container-fluid">
+  <img src="https://vignette.wikia.nocookie.net/harrypotter/images/6/62/Sorting_Hat.png/revision/latest?cb=20161120072849">
+  
+  <label for="studentName">Student Name:</label>
+  <input type="text" id="studentName" placeholder="Neville Longbottom">
+  <button id="secondButton">Sort!</button>
+  </div>`
   writeToDom("#sortDiv", domString)
   document.querySelector("#secondButton").addEventListener('click', secondButtonPushed);
+  // document.querySelector("#studentName").addEventListener('keyup', )
 }
 
 const secondButtonPushed = () => {
+  if (!document.querySelector("#studentName").value){
+    alert("Please Enter a Name")
+    return
+  }
   let studentObject = {};
   studentObject.name = document.querySelector("#studentName").value;
   studentObject.house = randomHouse();
