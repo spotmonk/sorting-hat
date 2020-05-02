@@ -40,3 +40,13 @@ body{
   background-color: yellow !important;
   border-radius: 0 0px 10px 10px !important;
 }
+
+.DeathEaters {
+  background-color: darkslategray !important;
+  border-radius: 0 0px 10px 10px !important;
+}
+
+.voldemort {
+  background-color: darkslategray;
+  color: yellowgreen;
+}
