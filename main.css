@@ -9,15 +9,34 @@ body{
 }
 
 .sortForm {
-  height: 300px;
-  Margin: 0 0 100px 0;
+  height: 150px;
+  Margin: 0 0 75px 0;
 }
 
-.sortForm img{
-  height: 300px;
-  width: 300px;
+.card img{
+  max-height: 400px;
 }
 
 .sortForm label{
   font-size: 25px;
+}
+
+.Gryffindor {
+  background-color: red !important;
+  border-radius: 0 0px 10px 10px !important;
+}
+
+.Slytherin {
+  background-color: green !important;
+  border-radius: 0 0px 10px 10px !important;
+}
+
+.Ravenclaw {
+  background-color: purple !important;
+  border-radius: 0 0px 10px 10px !important;
+}
+
+.Hufflepuff {
+  background-color: yellow !important;
+  border-radius: 0 0px 10px 10px !important;
 }

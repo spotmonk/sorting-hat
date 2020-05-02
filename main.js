@@ -1,21 +1,31 @@
 const students = [
   
 ]
+const expelledStudents = [
+
+]
 
 const writeToDom = (selector, string)=>{
   document.querySelector(selector).innerHTML = string
 }
 
 const displaySortForm = () => {
-  domString = `<div class="sortForm container-fluid">
-  <img src="https://vignette.wikia.nocookie.net/harrypotter/images/6/62/Sorting_Hat.png/revision/latest?cb=20161120072849">
-  
-  <label for="studentName">Student Name:</label>
-  <input type="text" id="studentName" placeholder="Neville Longbottom">
-  <button id="secondButton">Sort!</button>
-  </div>`
+  domString = `<div>
+  <form>
+  <div class="form-row justify-content-center">
+    <div class="col col-6">
+      <input id="studentName" type="text" class="form-control" placeholder="Name">
+    </div>
+  </div>
+</form>
+<button id="secondButton"  class="btn btn-primary">Sort to House!</button>
+<button id="sortHouse"  class="btn btn-primary">Sort By House</button>
+<button id="sortName"  class="btn btn-primary">Sort By Name!</button>
+</div>`
   writeToDom("#sortDiv", domString)
   document.querySelector("#secondButton").addEventListener('click', secondButtonPushed);
+  document.querySelector("#sortHouse").addEventListener('click', function(){ printCards(students.sort(compareHouse))});
+  document.querySelector("#sortName").addEventListener('click', function(){ printCards(students.sort(compareName))});
   // document.querySelector("#studentName").addEventListener('keyup', )
 }
 
@@ -50,8 +60,8 @@ const printCards = (studentsArr) =>
 { let domString = ''
   for (let i = 0; i<studentsArr.length; i++){
     domString += `<div class="card" style="width: 18rem;">
-        <img src="${getHouseImg(studentsArr[i].house)}" class="card-img-top" alt="${studentsArr[i].house} symbol">
-        <div class="card-body">
+        <img class="${studentsArr[i].house}" src="${getHouseImg(studentsArr[i].house)}" class="card-img-top" alt="${studentsArr[i].house} symbol">
+        <div class="${studentsArr[i].house} card-body">
           <h5 class="card-title">${studentsArr[i].name}</h5>
           <p class="card-text">${studentsArr[i].house}</p>
           <a id="expelBtn${i}" class="btn btn-primary">Expel</a>
@@ -80,16 +90,36 @@ const getHouseImg = (house) => {
 }
 
 const expelButton = (event) =>{
-  removed =[]
   indexToRemove = event.target.id.match(/\d+/g)
-  console.log(indexToRemove)
-  removedStudent = students.splice(parseInt(indexToRemove),1)
-  removed.push(removedStudent)
+  removedStudent = students.splice(indexToRemove,1)
+  removedStudent.house = "DeathEaters"
+  expelledStudents.push(removedStudent)
+  console.log(expelledStudents)
   printCards(students)
 }
 
+const compareHouse = (a,b) => {
+  if (a.house < b.house){
+    return -1
+  }
+  if (a.house > b.house) {
+    return 1
+  }
+  return 0
+}
+const compareName = (a,b) => {
+  if (a.name.toUpperCase() < b.name.toUpperCase()){
+    return -1
+  }
+  if (a.name.toUpperCase() > b.name.toUpperCase()) {
+    return 1
+  }
+  return 0
+}
+
+
+
 const createClickEventHandler = (selector, eventfunct) => {
-  console.log(selector)
   document.querySelector(selector).addEventListener('click', eventfunct);
 
 }
