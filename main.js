@@ -135,7 +135,7 @@ const armyToggle = () =>{
   if (document.querySelector("#army").classList.contains("voldemort")){
   console.log("voldemort")
   printCards(expelledStudents)
-  button.innerHTML="All";
+  button.innerHTML="Dumbledore's Army";
   button.classList.remove('voldemort');
 }
   else{
