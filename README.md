@@ -16,5 +16,5 @@ Each card has the option to expell the student and have them join voldemort's ar
 
 ## View Project
 
-* Clone the repository `$ git clone git@github.com:spotmonk/pet-adoption.git`
+* Clone the repository `$ git clone git@github.com:spotmonk/sorting-hat.git`
 * Run any HTTP server. My favorite is installed with `$ npm install http-server` and run with a `$ hs`
